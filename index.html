@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Webdesign aus Deutschland | Kinetik</title>
+
+  <!-- Google Fonts: Inter & Space Grotesk for premium feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN for full utility access -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            shopify: {
+              green: '#008060',
+              dark: '#0B0C0D',
+              card: '#141414',
+              border: '#2A2A2A',
+              text: '#D1D5DB'
+            }
+          },
+          boxShadow: {
+            'glow': '0 0 40px -10px rgba(0, 128, 96, 0.3)',
+            'card': '0 0 0 1px rgba(255,255,255,0.05), 0 4px 6px -1px rgba(0,0,0,0.1)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050505;
+      color: #fff;
+    }
+
+    .glass-nav {
+      background: rgba(5, 5, 5, 0.7);
+      backdrop-filter: blur(16px);
+      border-bottom: none;
+    }
+
+    .blob {
+      position: absolute;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #008060;
+    }
+
+    /* Accordion utility */
+    details>summary {
+      list-style: none;
+    }
+
+    details>summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Marquee Animation */
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+
+    /* Subtle Gradient Animation */
+    @keyframes gradient-xy {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient-xy 15s ease infinite;
+    }
+
+    /* Animation Utilities */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Touch Optimizations */
+    html,
+    body {
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+      overscroll-behavior-x: none;
+      width: 100%;
+    }
+
+    /* Prevent iOS scroll bounce when menu is open */
+    .no-scroll {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-shopify-green selection:text-white overflow-x-hidden">
+
+  <!-- 1. Header (Navigation) -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300 transform"
+    data-delay="0">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+      <a href="#"
+        class="font-display text-xl md:text-2xl font-bold tracking-tight text-white hover:text-shopify-green transition-colors">
+        KINETIK<span class="text-shopify-green">.</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#leistungen"
+          class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Leistungen</a>
+        <a href="#referenzen" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Arbeiten</a>
+        <a href="#ablauf" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Ablauf</a>
+        <a href="#ueber" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Über uns</a>
+        <a href="#faq" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="#kontakt"
+          class="hidden md:inline-flex px-5 py-2.5 bg-shopify-green hover:bg-[#006e52] text-white text-sm font-medium rounded-full transition-all shadow-glow">
+          Projekt starten
+        </a>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-full">
+    <!-- 2. Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
+      <!-- Background Effects -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#0a1f18] to-[#050505] animate-gradient opacity-80">
+      </div>
+      <div class="blob bg-shopify-green w-96 h-96 top-0 left-1/4 animate-pulse opacity-20 mix-blend-screen"></div>
+      <div
+        class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay">
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div
+          class="animate-on-scroll inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
+          data-delay="100">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          <span class="text-xs font-semibold text-gray-300 tracking-widest uppercase">Verfügbar für neue Projekte</span>
+        </div>
+
+        <h1
+          class="animate-on-scroll font-display text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.1]"
+          data-delay="200">
+          <span class="bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">Premium
+            Webdesign</span><br />
+          aus <span class="text-shopify-green">Deutschland.</span>
+        </h1>
+
+        <p class="animate-on-scroll text-base md:text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed tracking-wide"
+          data-delay="300">
+          Wir verwandeln Besucher in Kunden durch strategisches Design und erstklassige Entwicklung. Maßgeschneidert für
+          ambitionierte Marken, die den Unterschied machen wollen.
+        </p>
+
+        <div class="animate-on-scroll flex flex-col sm:flex-row items-center justify-center gap-4" data-delay="400">
+          <a href="#kontakt"
+            class="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform text-sm tracking-wide">
+            Kostenloses Erstgespräch
+          </a>
+          <a href="#referenzen"
+            class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition-all group text-sm tracking-wide">
+            Arbeiten ansehen
+            <span class="inline-block transition-transform group-hover:translate-x-1 ml-1">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Trust Bar (Marquee) -->
+    <section class="py-12 border-y border-white/5 bg-shopify-card/50 overflow-x-hidden relative">
+      <div
+        class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none">
+      </div>
+      <div
+        class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none">
+      </div>
+      <!-- Ambient Glow -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[200px] bg-shopify-green/10 blur-[80px] rounded-full pointer-events-none mix-blend-screen">
+      </div>
+
+      <div class="w-full mx-auto px-4 md:px-6 overflow-x-hidden">
+        <p class="animate-on-scroll text-center text-xs text-gray-500 mb-8 uppercase tracking-[0.2em] font-medium">
+          Vertrauen durch Ergebnisse</p>
+
+        <div class="flex animate-marquee whitespace-nowrap gap-12 md:gap-24 items-center will-change-transform">
+          <!-- Set 1 -->
+          <div
+            class="mx-4 md:mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- QUANTUM -->
+            <svg class="h-8 md:h-10 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="12" stroke="white" stroke-width="2" />
+              <circle cx="20" cy="20" r="4" fill="#008060" />
+              <path d="M28 28L34 34" stroke="white" stroke-width="2" stroke-linecap="round" />
+              <text x="45" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="20"
+                letter-spacing="-0.5">QUANTUM</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- PULSE -->
+            <svg class="h-6 md:h-9 w-auto" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20H20L25 10L35 30L40 20H50" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <text x="60" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="20"
+                letter-spacing="-0.5">PULSE</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- ECHO -->
+            <svg class="h-6 md:h-8 w-auto" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="4" height="20" rx="2" fill="white" />
+              <rect x="20" y="6" width="4" height="28" rx="2" fill="#008060" />
+              <rect x="30" y="14" width="4" height="12" rx="2" fill="white" />
+              <text x="45" y="26" fill="white" font-family="sans-serif" font-weight="600" font-size="20"
+                letter-spacing="1">ECHO</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- HORIZON -->
+            <svg class="h-8 md:h-10 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 28C10 28 15 12 25 12C35 12 40 28 40 28" stroke="white" stroke-width="2"
+                stroke-linecap="round" />
+              <circle cx="25" cy="20" r="3" fill="#008060" />
+              <text x="50" y="26" fill="white" font-family="sans-serif" font-weight="bold" font-size="19"
+                letter-spacing="0">HORIZON</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- APEX -->
+            <svg class="h-6 md:h-9 w-auto" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 10L10 30H30L20 10Z" fill="white" />
+              <path d="M20 16L16 26H24L20 16Z" fill="#050505" />
+              <text x="40" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="22">APEX</text>
+            </svg>
+          </div>
+
+          <!-- Set 2 (Duplicate) -->
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- QUANTUM -->
+            <svg class="h-8 md:h-10 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="12" stroke="white" stroke-width="2" />
+              <circle cx="20" cy="20" r="4" fill="#008060" />
+              <path d="M28 28L34 34" stroke="white" stroke-width="2" stroke-linecap="round" />
+              <text x="45" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="20"
+                letter-spacing="-0.5">QUANTUM</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- PULSE -->
+            <svg class="h-6 md:h-9 w-auto" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20H20L25 10L35 30L40 20H50" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <text x="60" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="20"
+                letter-spacing="-0.5">PULSE</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- ECHO -->
+            <svg class="h-6 md:h-8 w-auto" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="4" height="20" rx="2" fill="white" />
+              <rect x="20" y="6" width="4" height="28" rx="2" fill="#008060" />
+              <rect x="30" y="14" width="4" height="12" rx="2" fill="white" />
+              <text x="45" y="26" fill="white" font-family="sans-serif" font-weight="600" font-size="20"
+                letter-spacing="1">ECHO</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- HORIZON -->
+            <svg class="h-8 md:h-10 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 28C10 28 15 12 25 12C35 12 40 28 40 28" stroke="white" stroke-width="2"
+                stroke-linecap="round" />
+              <circle cx="25" cy="20" r="3" fill="#008060" />
+              <text x="50" y="26" fill="white" font-family="sans-serif" font-weight="bold" font-size="19"
+                letter-spacing="0">HORIZON</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- APEX -->
+            <svg class="h-6 md:h-9 w-auto" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 10L10 30H30L20 10Z" fill="white" />
+              <path d="M20 16L16 26H24L20 16Z" fill="#050505" />
+              <text x="40" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="22">APEX</text>
+            </svg>
+          </div>
+
+          <!-- Set 3 (Duplicate) -->
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- QUANTUM -->
+            <svg class="h-8 md:h-10 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="12" stroke="white" stroke-width="2" />
+              <circle cx="20" cy="20" r="4" fill="#008060" />
+              <path d="M28 28L34 34" stroke="white" stroke-width="2" stroke-linecap="round" />
+              <text x="45" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="20"
+                letter-spacing="-0.5">QUANTUM</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- PULSE -->
+            <svg class="h-6 md:h-9 w-auto" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20H20L25 10L35 30L40 20H50" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <text x="60" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="20"
+                letter-spacing="-0.5">PULSE</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- ECHO -->
+            <svg class="h-6 md:h-8 w-auto" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="4" height="20" rx="2" fill="white" />
+              <rect x="20" y="6" width="4" height="28" rx="2" fill="#008060" />
+              <rect x="30" y="14" width="4" height="12" rx="2" fill="white" />
+              <text x="45" y="26" fill="white" font-family="sans-serif" font-weight="600" font-size="20"
+                letter-spacing="1">ECHO</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- HORIZON -->
+            <svg class="h-8 md:h-10 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 28C10 28 15 12 25 12C35 12 40 28 40 28" stroke="white" stroke-width="2"
+                stroke-linecap="round" />
+              <circle cx="25" cy="20" r="3" fill="#008060" />
+              <text x="50" y="26" fill="white" font-family="sans-serif" font-weight="bold" font-size="19"
+                letter-spacing="0">HORIZON</text>
+            </svg>
+          </div>
+          <div class="mx-8 opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0">
+            <!-- APEX -->
+            <svg class="h-6 md:h-9 w-auto" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 10L10 30H30L20 10Z" fill="white" />
+              <path d="M20 16L16 26H24L20 16Z" fill="#050505" />
+              <text x="40" y="26" fill="white" font-family="sans-serif" font-weight="700" font-size="22">APEX</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Problem/Solution -->
+    <section class="py-16 md:py-32 bg-shopify-dark relative overflow-hidden">
+      <div
+        class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-shopify-green/5 to-transparent pointer-events-none">
+      </div>
+      <!-- Bottom gradient for smooth transition -->
+      <div
+        class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#050505] pointer-events-none">
+      </div>
+      <!-- Ambient Glow -->
+      <div
+        class="absolute top-20 left-0 w-full max-w-[500px] h-[500px] bg-shopify-green/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen">
+      </div>
+
+      <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+          <!-- Problem -->
+          <div class="space-y-10">
+            <h2 class="animate-on-scroll font-display text-4xl md:text-5xl font-bold">Wieso die meisten Websites <span
+                class="text-red-500">scheitern</span></h2>
+            <div class="space-y-4">
+              <div
+                class="animate-on-scroll group flex gap-6 items-start p-6 rounded-2xl bg-red-500/5 border border-red-500/10 hover:border-red-500/30 transition-colors"
+                data-delay="100">
+                <div
+                  class="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 mt-1 shrink-0">
+                  ✕</div>
+                <div>
+                  <h4 class="text-xl font-semibold text-white mb-2">08/15 Baukasten-Design</h4>
+                  <p class="text-gray-400">Keine Differenzierung vom Wettbewerb. Ihr Unternehmen wirkt austauschbar und
+                    generisch.</p>
+                </div>
+              </div>
+              <div
+                class="animate-on-scroll group flex gap-6 items-start p-6 rounded-2xl bg-red-500/5 border border-red-500/10 hover:border-red-500/30 transition-colors"
+                data-delay="200">
+                <div
+                  class="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 mt-1 shrink-0">
+                  ✕</div>
+                <div>
+                  <h4 class="text-xl font-semibold text-white mb-2">Technisch veraltet</h4>
+                  <p class="text-gray-400">Lange Ladezeiten und schlechte mobile Optimierung kosten Sie täglich
+                    wertvolle Kunden.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solution -->
+          <div class="relative animate-on-scroll" data-delay="300">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-shopify-green to-teal-600 rounded-3xl opacity-30 blur-2xl">
+            </div>
+            <div class="relative bg-shopify-card p-10 rounded-3xl border border-white/10 shadow-2xl">
+              <h2 class="font-display text-xl md:text-3xl font-bold mb-8">Der Kinetik Standard</h2>
+              <div class="space-y-8">
+                <div class="flex gap-5 items-start">
+                  <div
+                    class="w-10 h-10 rounded-full bg-shopify-green/20 flex items-center justify-center text-shopify-green shrink-0">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-bold text-white mb-1">Maßgeschneidertes Design</h4>
+                    <p class="text-sm text-gray-400">Einzigartige Optik, die Ihre Markenwerte perfekt transportiert und
+                      im Gedächtnis bleibt.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <div
+                    class="w-10 h-10 rounded-full bg-shopify-green/20 flex items-center justify-center text-shopify-green shrink-0">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-bold text-white mb-1">High-Performance Code</h4>
+                    <p class="text-sm text-gray-400">Blitzschnelle Ladezeiten (99+ Google Score) für besseres SEO und
+                      Nutzererlebnis.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <div
+                    class="w-10 h-10 rounded-full bg-shopify-green/20 flex items-center justify-center text-shopify-green shrink-0">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-bold text-white mb-1">Verkaufspsychologie</h4>
+                    <p class="text-sm text-gray-400">Strukturen, die Besucher gezielt steuern und nachweislich zu mehr
+                      Anfragen führen.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Leistungen -->
+    <section id="leistungen" class="py-16 md:py-32 bg-[#050505] relative overflow-hidden">
+      <!-- Connecting Blob -->
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[400px] bg-shopify-green/5 blur-[120px] rounded-full pointer-events-none">
+      </div>
+
+      <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-12 md:mb-20">
+          <h2 class="animate-on-scroll font-display text-4xl md:text-5xl font-bold mb-6">Unsere Expertise</h2>
+          <p class="animate-on-scroll text-gray-400 text-lg max-w-xl mx-auto" data-delay="100">Alles was Sie für einen
+            erfolgreichen digitalen Auftritt benötigen.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Service 1 -->
+          <div
+            class="animate-on-scroll bg-shopify-card p-10 rounded-2xl border border-white/5 hover:border-shopify-green/50 transition-all duration-300 hover:shadow-glow hover:-translate-y-1"
+            data-delay="0">
+            <div class="w-14 h-14 bg-white/5 rounded-xl flex items-center justify-center mb-8 text-white">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 font-display">Web Design & UI/UX</h3>
+            <p class="text-gray-400 leading-relaxed">Ästhetische und funktionale Designs, die Ihre Zielgruppe
+              begeistern. Wir gestalten Interfaces, die intuitiv bedienbar sind und Vertrauen schaffen.</p>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="animate-on-scroll bg-shopify-card p-10 rounded-2xl border border-white/5 hover:border-shopify-green/50 transition-all duration-300 hover:shadow-glow hover:-translate-y-1"
+            data-delay="100">
+            <div class="w-14 h-14 bg-white/5 rounded-xl flex items-center justify-center mb-8 text-white">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 font-display">Development</h3>
+            <p class="text-gray-400 leading-relaxed">Sauberer Code mit React, Next.js oder Webflow. Wir programmieren
+              performant, responsiv und barrierefrei für alle Endgeräte.</p>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="animate-on-scroll bg-shopify-card p-10 rounded-2xl border border-white/5 hover:border-shopify-green/50 transition-all duration-300 hover:shadow-glow hover:-translate-y-1"
+            data-delay="200">
+            <div class="w-14 h-14 bg-white/5 rounded-xl flex items-center justify-center mb-8 text-white">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 font-display">SEO & Performance</h3>
+            <p class="text-gray-400 leading-relaxed">Systematische Optimierung für Suchmaschinen und blitzschnelle
+              Ladezeiten. Damit Sie nicht nur gut aussehen, sondern auch gefunden werden.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom gradient for next section -->
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black pointer-events-none">
+      </div>
+    </section>
+
+    <!-- 6. Referenzen / Fallstudien -->
+    <section id="referenzen" class="py-16 md:py-32 bg-black border-t border-white/5 relative overflow-hidden">
+      <!-- Side Blob -->
+      <div
+        class="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-blue-900/10 blur-[100px] rounded-full pointer-events-none">
+      </div>
+      <!-- Ambient Glow Left -->
+      <div
+        class="absolute bottom-0 left-0 w-full max-w-[600px] h-[500px] bg-shopify-green/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen">
+      </div>
+
+      <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
+        <div class="animate-on-scroll flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-8">
+          <div>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Ausgewählte Arbeiten</h2>
+            <p class="text-gray-400 text-lg">Ein Einblick in unsere jüngsten Projekte.</p>
+          </div>
+          <a href="#"
+            class="text-white border-b border-shopify-green pb-1 hover:text-shopify-green transition-colors font-medium text-lg">Alle
+            Projekte ansehen →</a>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- Project 1 -->
+          <div class="animate-on-scroll group cursor-pointer" data-delay="0">
+            <div class="relative overflow-hidden rounded-2xl mb-6">
+              <img src="./images/asset_1.jpg" alt="Projekt 1"
+                class="w-full aspect-[4/3] object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out transform group-hover:scale-105">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full">Case
+                  Study ansehen</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-2xl font-bold mb-2 group-hover:text-shopify-green transition-colors font-display">Modern
+                  Architecture</h3>
+                <p class="text-gray-500">Web Design • Development</p>
+              </div>
+              <span
+                class="p-2 border border-white/10 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="animate-on-scroll group cursor-pointer md:mt-20" data-delay="100">
+            <div class="relative overflow-hidden rounded-2xl mb-6">
+              <img src="./images/asset_2.jpg" alt="Projekt 2"
+                class="w-full aspect-[4/3] object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out transform group-hover:scale-105">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full">Case
+                  Study ansehen</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-2xl font-bold mb-2 group-hover:text-shopify-green transition-colors font-display">
+                  Finance Corp</h3>
+                <p class="text-gray-500">Rebranding • Next.js</p>
+              </div>
+              <span
+                class="p-2 border border-white/10 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="animate-on-scroll group cursor-pointer" data-delay="200">
+            <div class="relative overflow-hidden rounded-2xl mb-6">
+              <img src="./images/asset_3.jpg" alt="Projekt 3"
+                class="w-full aspect-[4/3] object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out transform group-hover:scale-105">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full">Case
+                  Study ansehen</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-2xl font-bold mb-2 group-hover:text-shopify-green transition-colors font-display">Urban
+                  Living</h3>
+                <p class="text-gray-500">App Design • React Native</p>
+              </div>
+              <span
+                class="p-2 border border-white/10 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="animate-on-scroll group cursor-pointer md:mt-20" data-delay="300">
+            <div class="relative overflow-hidden rounded-2xl mb-6">
+              <img src="./images/asset_4.jpg" alt="Projekt 4"
+                class="w-full aspect-[4/3] object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out transform group-hover:scale-105">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full">Case
+                  Study ansehen</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-2xl font-bold mb-2 group-hover:text-shopify-green transition-colors font-display">Future
+                  Tech</h3>
+                <p class="text-gray-500">Corporate Site • Webflow</p>
+              </div>
+              <span
+                class="p-2 border border-white/10 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Gradient to next section -->
+      <div
+        class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-shopify-dark pointer-events-none">
+      </div>
+    </section>
+
+    <!-- 7. Unser Ablauf -->
+    <section id="ablauf" class="py-16 md:py-32 bg-shopify-dark relative overflow-hidden">
+      <!-- Decoration -->
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      <!-- Ambient Glow -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[500px] bg-shopify-green/5 blur-[100px] rounded-full pointer-events-none mix-blend-screen">
+      </div>
+
+      <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
+        <h2 class="animate-on-scroll font-display text-4xl md:text-5xl font-bold mb-16 md:mb-24 text-center">Der Weg zur
+          neuen
+          Website</h2>
+
+        <div class="grid md:grid-cols-4 gap-12 relative">
+          <!-- Connecting Line -->
+          <div
+            class="hidden md:block absolute top-12 left-0 w-full h-px bg-gradient-to-r from-transparent via-shopify-border to-transparent z-0">
+          </div>
+
+          <!-- Step 1 -->
+          <div class="animate-on-scroll relative z-10 group" data-delay="0">
+            <div
+              class="w-16 h-16 md:w-24 md:h-24 bg-shopify-card border border-white/10 rounded-full flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-8 group-hover:border-shopify-green group-hover:text-shopify-green transition-colors shadow-card mx-auto md:mx-0">
+              01</div>
+            <h3 class="text-xl font-bold mb-4 text-white">Strategie</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Wir analysieren Ihre Ziele, Zielgruppe und Wettbewerber, um
+              das perfekte Konzept zu erstellen. Keine blinden Vermutungen.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="animate-on-scroll relative z-10 group" data-delay="100">
+            <div
+              class="w-16 h-16 md:w-24 md:h-24 bg-shopify-card border border-white/10 rounded-full flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-8 group-hover:border-shopify-green group-hover:text-shopify-green transition-colors shadow-card mx-auto md:mx-0">
+              02</div>
+            <h3 class="text-xl font-bold mb-4 text-white">Design</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Wir visualisieren die Struktur und erstellen ein High-End
+              UI Design in Figma, das Ihre Marke perfekt repräsentiert.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="animate-on-scroll relative z-10 group" data-delay="200">
+            <div
+              class="w-16 h-16 md:w-24 md:h-24 bg-shopify-card border border-white/10 rounded-full flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-8 group-hover:border-shopify-green group-hover:text-shopify-green transition-colors shadow-card mx-auto md:mx-0">
+              03</div>
+            <h3 class="text-xl font-bold mb-4 text-white">Entwicklung</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Umsetzung in pixelgenauen Code. Ihre Seite wird nicht nur
+              schön, sondern auch technisch brillant.</p>
+          </div>
+          <!-- Step 4 -->
+          <div class="animate-on-scroll relative z-10 group" data-delay="300">
+            <div
+              class="w-16 h-16 md:w-24 md:h-24 bg-shopify-card border border-white/10 rounded-full flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-8 group-hover:border-shopify-green group-hover:text-shopify-green transition-colors shadow-card mx-auto md:mx-0">
+              04</div>
+            <h3 class="text-xl font-bold mb-4 text-white">Launch</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Live-Gang Ihrer neuen Website, ausführliche Schulung und
+              Übergabe aller Zugänge. Wir lassen Sie nicht allein.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Über mich / Expertise -->
+    <section id="ueber" class="py-16 md:py-32 bg-black overflow-hidden relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          class="animate-on-scroll rounded-3xl p-8 md:p-16 border border-white/5 bg-zinc-900/30 backdrop-blur-sm relative overflow-hidden">
+          <!-- Glow effect -->
+          <div
+            class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-shopify-green/10 blur-[100px] rounded-full">
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="order-2 md:order-1">
+              <div
+                class="inline-block px-3 py-1 bg-shopify-green/10 text-shopify-green text-xs font-bold uppercase tracking-wider rounded-full mb-6">
+                Der Experte</div>
+              <h2 class="font-display text-4xl font-bold mb-8">Hi, ich bin Alex.</h2>
+              <div class="space-y-6 text-gray-400 text-lg leading-relaxed mb-10">
+                <p>Als Senior Web Designer und Developer mit über 8 Jahren Erfahrung helfe ich Unternehmen dabei, im
+                  digitalen Raum zu dominieren.</p>
+                <p>Mein Fokus liegt nicht nur auf "hübschen Bildern", sondern auf messbaren Ergebnissen. Ich verbinde
+                  deutsche Ingenieurskunst mit modernem Design-Thinking.</p>
+              </div>
+              <div class="grid grid-cols-3 gap-4 md:gap-8 py-8 border-t border-white/10">
+                <div>
+                  <div class="text-xl md:text-3xl font-bold text-white mb-1">8+</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Jahre Erfahrung</div>
+                </div>
+                <div>
+                  <div class="text-xl md:text-3xl font-bold text-white mb-1">50+</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Projekte</div>
+                </div>
+                <div>
+                  <div class="text-xl md:text-3xl font-bold text-white mb-1">100%</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Erfolgsquote</div>
+                </div>
+              </div>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center">
+              <div
+                class="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+                <!-- Using a specific asset that looks like a person or generic professional -->
+                <img src="./images/asset_14.jpg" alt="Profile"
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FAQ -->
+    <section id="faq" class="py-16 md:py-32 bg-black">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="animate-on-scroll font-display text-4xl md:text-5xl font-bold mb-16 text-center">Häufig gestellte
+          Fragen</h2>
+
+        <!-- Ambient Glow -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] h-[600px] bg-shopify-green/10 blur-[130px] rounded-full pointer-events-none mix-blend-screen">
+        </div>
+
+        <div class="space-y-4">
+          <!-- Question 1 -->
+          <details
+            class="animate-on-scroll group bg-shopify-card rounded-xl border border-white/5 transition-all duration-300 open:border-shopify-green/50 open:bg-zinc-900"
+            data-delay="0">
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 md:p-8 font-semibold text-lg text-white select-none">
+              <span>Wie lange dauert ein Projekt?</span>
+              <span class="transition-transform group-open:rotate-180 text-shopify-green">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6 mt-2">
+              In der Regel dauert ein komplettes Webdesign-Projekt zwischen 4 und 8 Wochen. Dies hängt stark vom Umfang
+              der gewünschten Funktionen und der Schnelligkeit des Feedback-Prozesses ab. Wir erstellen zu Beginn immer
+              einen verbindlichen Zeitplan.
+            </div>
+          </details>
+
+          <!-- Question 2 -->
+          <details
+            class="animate-on-scroll group bg-shopify-card rounded-xl border border-white/5 transition-all duration-300 open:border-shopify-green/50 open:bg-zinc-900"
+            data-delay="100">
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 md:p-8 font-semibold text-lg text-white select-none">
+              <span>Wie hoch sind die Kosten?</span>
+              <span class="transition-transform group-open:rotate-180 text-shopify-green">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6 mt-2">
+              Jedes Projekt ist einzigartig. Unsere Preise starten in der Regel bei 2.500€ für professionelle Landing
+              Pages. Umfangreichere Corporate Websites liegen meist zwischen 4.000€ und 10.000€. Vereinbaren Sie gerne
+              ein kostenloses Erstgespräch für ein individuelles Angebot.
+            </div>
+          </details>
+
+          <!-- Question 3 -->
+          <details
+            class="animate-on-scroll group bg-shopify-card rounded-xl border border-white/5 transition-all duration-300 open:border-shopify-green/50 open:bg-zinc-900"
+            data-delay="200">
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 md:p-8 font-semibold text-lg text-white select-none">
+              <span>Kann ich Inhalte selbst ändern?</span>
+              <span class="transition-transform group-open:rotate-180 text-shopify-green">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6 mt-2">
+              Absolut. Wir integrieren ein benutzerfreundliches CMS (Content Management System) wie Webflow oder
+              WordPress, mit dem Sie Texte und Bilder ganz einfach ohne Programmierkenntnisse austauschen können. Eine
+              Schulung ist inklusive.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Call to Action -->
+    <section id="kontakt"
+      class="py-16 md:py-32 relative overflow-hidden bg-gradient-to-b from-black to-[#051a14] text-center">
+      <div class="absolute inset-0 bg-[url('./images/hero_bg.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay">
+      </div>
+      <div class="relative z-10 max-w-3xl mx-auto px-6">
+        <h2 class="animate-on-scroll font-display text-5xl md:text-6xl font-bold mb-8">Bereit für den nächsten Schritt?
+        </h2>
+        <p class="animate-on-scroll text-xl text-gray-400 mb-12 max-w-2xl mx-auto" data-delay="100">Lassen Sie uns über
+          Ihr Projekt sprechen. Finden Sie heraus, wie wir Ihre digitale Präsenz auf das nächste Level heben können.</p>
+        <div class="animate-on-scroll flex flex-col sm:flex-row justify-center gap-4" data-delay="200">
+          <a href="mailto:kontakt@example.com"
+            class="px-8 py-5 bg-shopify-green hover:bg-[#006e52] text-white text-lg font-bold rounded-full transition-all shadow-glow hover:scale-105">
+            Jetzt Projekt anfragen
+          </a>
+          <a href="#"
+            class="px-8 py-5 bg-transparent border border-white/20 text-white text-lg font-bold rounded-full hover:bg-white/5 transition-all">
+            Termin buchen
+          </a>
+        </div>
+        <p class="animate-on-scroll mt-8 text-sm text-gray-500" data-delay="300">Antwort innerhalb von 24 Stunden.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 11. Footer -->
+  <footer class="bg-black border-t border-white/5 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-12 mb-16">
+        <div class="md:col-span-2">
+          <a href="#" class="font-display text-2xl font-bold mb-6 block text-white">KINETIK<span
+              class="text-shopify-green">.</span></a>
+          <p class="text-gray-500 max-w-sm leading-relaxed">Premium Webdesign aus Deutschland. Wir helfen Unternehmen,
+            im digitalen Zeitalter zu wachsen und sichtbar zu werden.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-wider">Navigation</h4>
+          <ul class="space-y-4 text-sm text-gray-400">
+            <li><a href="#leistungen" class="hover:text-shopify-green transition-colors">Leistungen</a></li>
+            <li><a href="#referenzen" class="hover:text-shopify-green transition-colors">Arbeiten</a></li>
+            <li><a href="#ablauf" class="hover:text-shopify-green transition-colors">Ablauf</a></li>
+            <li><a href="#ueber" class="hover:text-shopify-green transition-colors">Über uns</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-wider">Rechtliches</h4>
+          <ul class="space-y-4 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-shopify-green transition-colors">Impressum</a></li>
+            <li><a href="#" class="hover:text-shopify-green transition-colors">Datenschutz</a></li>
+            <li><a href="#" class="hover:text-shopify-green transition-colors">AGB</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+        <p>&copy; 2026 Kinetik Digital. Alle Rechte vorbehalten.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+          <a href="#" class="hover:text-white transition-colors">Twitter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu"
+    class="fixed inset-0 bg-black/95 z-[60] transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8 md:hidden">
+    <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-4xl">&times;</button>
+    <a href="#leistungen"
+      class="mobile-link text-2xl font-display font-bold text-white hover:text-shopify-green transition-colors">Leistungen</a>
+    <a href="#referenzen"
+      class="mobile-link text-2xl font-display font-bold text-white hover:text-shopify-green transition-colors">Arbeiten</a>
+    <a href="#ablauf"
+      class="mobile-link text-2xl font-display font-bold text-white hover:text-shopify-green transition-colors">Ablauf</a>
+    <a href="#ueber"
+      class="mobile-link text-2xl font-display font-bold text-white hover:text-shopify-green transition-colors">Über
+      uns</a>
+    <a href="#faq"
+      class="mobile-link text-2xl font-display font-bold text-white hover:text-shopify-green transition-colors">FAQ</a>
+    <a href="#kontakt" class="mobile-link px-8 py-4 bg-shopify-green text-white font-bold rounded-full mt-4">Projekt
+      starten</a>
+  </div>
+  <!-- Animation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target); // Only animate once
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+        // Add staggered delay based on index or data attribute
+        if (el.dataset.delay) {
+          el.style.transitionDelay = `${el.dataset.delay}ms`;
+        }
+        observer.observe(el);
+      });
+    });
+  </script>
+  <!-- Scripts -->
+  <script>
+    // Smart Header
+    let lastScroll = 0;
+    const header = document.getElementById('main-header');
+
+    function checkScroll() {
+      if (window.scrollY < 20) {
+        header.classList.remove('glass-nav');
+        header.classList.add('bg-transparent');
+      } else {
+        header.classList.add('glass-nav');
+        header.classList.remove('bg-transparent');
+      }
+    }
+
+    // Initial check
+    checkScroll();
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      checkScroll();
+
+      if (currentScroll <= 0) {
+        header.classList.remove('-translate-y-full');
+        return;
+      }
+
+      if (currentScroll > lastScroll && !header.classList.contains('-translate-y-full')) {
+        // Scroll Down
+        header.classList.add('-translate-y-full');
+      } else if (currentScroll < lastScroll && header.classList.contains('-translate-y-full')) {
+        // Scroll Up
+        header.classList.remove('-translate-y-full');
+      }
+      lastScroll = currentScroll;
+    });
+
+
+
+    // Mobile Menu Logic (Wrapped in DOMContentLoaded for safety)
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const closeMenuBtn = document.getElementById('close-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+      const body = document.body;
+
+      function toggleMenu() {
+        const isClosed = mobileMenu.classList.contains('translate-x-full');
+
+        if (isClosed) {
+          // Open Menu
+          mobileMenu.classList.remove('translate-x-full');
+          body.classList.add('no-scroll');
+        } else {
+          // Close Menu
+          mobileMenu.classList.add('translate-x-full');
+          body.classList.remove('no-scroll');
+        }
+      }
+
+      if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+      if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
+      });
+    });
+  </script>
+</body>
+
+</html>
